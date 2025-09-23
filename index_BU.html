@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RicoMap - Descubre nuevos sabores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background: linear-gradient(135deg, #161313, #1b1313);
+      padding: 20px;
+    }
+
+    header img {
+      width: 500px;
+      margin-bottom: 20px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    header p {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .cta-button {
+      padding: 14px 35px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      background: #e50914;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      animation: fadeInUp 2s ease-out;
+    }
+
+    .cta-button:hover {
+      background: #b20710;
+      transform: scale(1.05);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1f1f1f;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    .card img {
+      width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+      object-fit: cover;
+    }
+
+    .app-demo img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .app-demo img.zoomed {
+      transform: scale(1.5);
+      z-index: 2000;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1500;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-height: 90vh;
+      /* que no sobrepase la pantalla */
+      overflow-y: auto;
+      /* scroll interno si se llena */
+      text-align: left;
+      animation: fadeIn 0.4s ease;
+      position: relative;
+    }
+
+    .modal-body {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .modal-img {
+      max-width: 20%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-body p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      color: #e50914;
+      margin-bottom: 20px;
+    }
+
+    .registro-modal {
+      text-align: center;
+    }
+
+    .registro-modal h2 {
+      margin-bottom: 20px;
+    }
+
+    .registro-modal .perfil-opciones {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .registro-modal .choice-btn {
+      margin: 5px 0;
+    }
+
+    .choice-btn {
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      background: #e50914;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    form {
+      max-width: 100%;
+      margin-top: 20px;
+      display: none;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      max-width: 100%;
+      /* evita que se salgan */
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background: #e50914;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+      background: #b20710;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <header id="home">
+    <img src="logo.png" alt="RicoMap Logo" />
+    <h1>RicoMap</h1>
+    <p>Descubre la auténtica gastronomía local y apoya la economía popular</p>
+    <button class="cta-button" onclick="openModal('modal')">
+      Regístrate
+    </button>
+  </header>
+
+  <!-- Benefits Section -->
+  <section class="reveal">
+    <h2>¿Por qué unirte a RicoMap?</h2>
+    <div class="benefits">
+      <div class="card" onclick="openModal('modal1')">
+        <img src="cuality2.png" alt="Visibilidad" />
+        <h3>Más Visibilidad</h3>
+        <p>Haz que tu restaurante llegue a nuevos clientes en tu ciudad.</p>
+      </div>
+      <div class="card" onclick="openModal('modal2')">
+        <img src="cuality2.png" alt="Opciones" />
+        <h3>Nuevas Opciones</h3>
+        <p>Descubre sabores únicos más allá de los restaurantes comunes.</p>
+      </div>
+      <div class="card" onclick="openModal('modal3')">
+        <img src="cuality2.png" alt="Economía local" />
+        <h3>Apoyo Local</h3>
+        <p>Fortalece la economía popular apoyando pequeños negocios.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo App -->
+  <section class="app-demo reveal">
+    <h2>Explora con un clic</h2>
+    <p>Encuentra tu próximo lugar favorito desde tu celular.</p>
+    <img src="appex.png" alt="App en celular" />
+    <img src="appex.png" alt="App en celular" />
+    <img src="appex.png" alt="App en celular" />
+    <img src="appex.png" alt="App en celular" />
+  </section>
+
+  <section>
+    <a class="cta-button" href="#home" style="text-decoration: none">¿Te Interesa?</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 RicoMap - Todos los derechos reservados</p>
+    <p>📧 admin@ricomap.com</p>
+  </footer>
+
+  <!-- Modal Register -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div class="modal-content registro-modal">
+        <span class="close" onclick="closeModal('modal')">&times;</span>
+        <h2>Elige tu perfil</h2>
+        <div class="perfil-opciones">
+          <button class="choice-btn" onclick="showForm('cliente')">
+            Soy Cliente 👤
+          </button>
+          <button class="choice-btn" onclick="showForm('restaurante')">
+            Soy Restaurante 🍽️
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Client -->
+      <form id="formCliente">
+        <label for="nombreC">Nombre Completo</label>
+        <input type="text" id="nombreC" required />
+        <label for="usuarioC">Nombre de usuario</label>
+        <input type="text" id="usuarioC" required />
+        <label for="emailC">Email</label>
+        <input type="email" id="emailC" required />
+        <label for="fechaNac">Fecha de nacimiento</label>
+        <input type="date" id="fechaNac" required />
+        <label for="direccionC">Dirección/Ubicación</label>
+        <input type="text" id="direccionC" />
+        <input type="submit" value="Registrarme" />
+      </form>
+
+      <!-- Form Restaurant -->
+      <form id="formRestaurante">
+        <label for="nombreR">Nombre del restaurante</label>
+        <input type="text" id="nombreR" required />
+        <label for="direccionR">Dirección/Ubicación</label>
+        <input type="text" id="direccionR" required />
+        <label for="nit">NIT (si posee)</label>
+        <input type="text" id="nit" />
+        <label for="desc">Descripción</label>
+        <textarea id="desc"></textarea>
+        <label for="hora">Hora de apertura</label>
+        <input type="time" id="hora" />
+        <label for="fotos">Fotos</label>
+        <input type="file" id="fotos" multiple />
+        <label for="tipo">Tipo de comida</label>
+        <input type="text" id="tipo" />
+        <input type="submit" value="Registrarme" />
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 1 -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>Más Visibilidad</h2>
+      <div class="modal-body">
+        <img src="cuality2.png" alt="Más Visibilidad" class="modal-img" />
+        <p>
+          RicoMap funciona como un escaparate digital que amplifica la
+          presencia de los restaurantes:<br /><br />
+          • Los negocios aparecen en un mapa interactivo accesible para toda
+          la comunidad.<br />
+          • Cada restaurante tiene su propio perfil con fotos, reseñas y menús
+          dinámicos.<br />
+          • Los usuarios descubren nuevos lugares que de otro modo no
+          aparecerían en apps tradicionales.<br />
+          • Destacamos promociones y eventos en tiempo real para atraer más
+          clientes.<br /><br />
+          👉 El restaurante gana exposición sin pagar campañas costosas:
+          visibilidad orgánica y directa en la palma del usuario.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h2>Nuevas Opciones</h2>
+      <div class="modal-body">
+        <img src="cuality2.png" alt="Nuevas Opciones" class="modal-img" />
+        <p>
+          Con RicoMap, los usuarios no se limitan a un solo canal. Desde la
+          app pueden:<br /><br />
+          • Explorar menús completos y actualizados en un solo lugar.<br />
+          • Filtrar por precio, distancia, tipo de comida o disponibilidad.<br />
+          • Apartar reservas en restaurantes o eventos locales.<br />
+          • Elegir cómo pedir: recoger, comer en el sitio o entrega si el
+          restaurante lo ofrece.<br /><br />
+          👉 Esto convierte a RicoMap en un hub de decisiones rápidas, donde
+          el usuario tiene más alternativas en menos tiempo.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h2>Apoyo Local</h2>
+      <div class="modal-body">
+        <img src="cuality2.png" alt="Apoyo Local" class="modal-img" />
+        <p>
+          RicoMap impulsa la economía de barrio y fomenta el consumo
+          consciente:<br /><br />
+          • Conecta a los usuarios con restaurantes de su zona.<br />
+          • Permite a los negocios pequeños competir en igualdad con cadenas
+          grandes.<br />
+          • Favorece la relación cercana entre clientes y restaurantes
+          locales.<br /><br />
+          👉 RicoMap es más que una app: es una red de apoyo al ecosistema
+          gastronómico local.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Scroll Reveal
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      },
+      { threshold: 0.2 }
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    // Modals
+    let formCliente = document.getElementById("formCliente");
+    let formRestaurante = document.getElementById("formRestaurante");
+
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+      if (id === "modal") resetForms();
+    }
+    function showForm(type) {
+      formCliente.style.display = "none";
+      formRestaurante.style.display = "none";
+      if (type === "cliente") formCliente.style.display = "block";
+      if (type === "restaurante") formRestaurante.style.display = "block";
+    }
+    function resetForms() {
+      formCliente.style.display = "none";
+      formRestaurante.style.display = "none";
+    }
+    window.onclick = function (e) {
+      document.querySelectorAll(".modal").forEach((modal) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+          if (modal.id === "modal") resetForms();
+        }
+      });
+    };
+
+    // Zoom img app-demo
+    const demoImages = document.querySelectorAll(".app-demo img");
+    demoImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        if (img.classList.contains("zoomed")) {
+          img.classList.remove("zoomed");
+        } else {
+          demoImages.forEach((i) => i.classList.remove("zoomed"));
+          img.classList.add("zoomed");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

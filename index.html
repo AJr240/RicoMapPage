@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RicoMap - Descubre nuevos sabores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <header id="home">
+    <img src="img/logo.png" alt="RicoMap Logo" />
+    <h1>RicoMap</h1>
+    <p>Descubre la auténtica gastronomía local y apoya la economía popular</p>
+    <button class="cta-button" onclick="openModal('modal')">
+      Regístrate
+    </button>
+  </header>
+
+  <section class="counter-section reveal">
+    <h2>Ya somos parte de la gran familia RicoMap</h2>
+    <div class="counter-box">
+      <span id="registroCounter">0</span>
+      <p>Usuarios registrados</p>
+    </div>
+  </section>
+
+  <section class="how-it-works reveal">
+    <h2>¿Cómo funciona RicoMap?</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-number">1</span>
+        <h3>Ingresa a RicoMap</h3>
+        <p>Descargarla facilmente desde la PlayStore o AppStore.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <h3>Descubre nuevas opciones</h3>
+        <p>Explora restaurantes locales y sabores únicos en un solo lugar.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <h3>Elige qué quieres comer</h3>
+        <p>Filtra por tipo de comida, precio o cercanía y disfruta tu elección.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="reveal">
+    <h2>¿Por qué unirte a RicoMap?</h2>
+    <div class="benefits">
+      <!-- Card 1 -->
+      <div class="card-flip">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="img/cuality2.png" alt="Visibilidad" />
+            <h3>Más Visibilidad</h3>
+          </div>
+          <div class="card-back">
+            <p>
+              Haz que tu restaurante llegue a nuevos clientes en tu ciudad con un
+              escaparate digital que aumenta tu presencia.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card-flip">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="img/cuality2.png" alt="Opciones" />
+            <h3>Nuevas Opciones</h3>
+          </div>
+          <div class="card-back">
+            <p>
+              Descubre sabores únicos más allá de los restaurantes comunes,
+              filtrando por precio, distancia y tipo de comida.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card-flip">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="img/cuality2.png" alt="Economía local" />
+            <h3>Apoyo Local</h3>
+          </div>
+          <div class="card-back">
+            <p>
+              Fortalece la economía popular apoyando pequeños negocios y
+              promoviendo el consumo local.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo App -->
+  <section class="app-demo reveal">
+    <h2>Explora con un clic</h2>
+    <p>Encuentra tu próximo lugar favorito desde tu celular.</p>
+    <img src="img/appex.png" alt="App en celular" />
+    <img src="img/appex.png" alt="App en celular" />
+    <img src="img/appex.png" alt="App en celular" />
+    <img src="img/appex.png" alt="App en celular" />
+  </section>
+
+  <section>
+    <a class="cta-button" href="#home" style="text-decoration: none">¿Te Interesa?</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <!-- Logo y descripción -->
+      <div class="footer-section">
+        <h2>RicoMap</h2>
+        <p>
+          Conectamos a restaurantes emergentes con clientes que buscan sabores
+          auténticos y diferentes, apoyando la economía local.
+        </p>
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div class="footer-section">
+        <h3>Enlaces rápidos</h3>
+        <ul>
+          <li><a href="#registro">Regístrate</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#explora">Explora</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <p>📍 Bogotá, Colombia</p>
+        <p>📧 contactenos@ricomap.com</p>
+        <p>📞 +57 300 123 4567</p>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <div class="social-icons">
+          <a href="#"><img src="facebook.png" alt="Facebook" /></a><br>
+          <a href="#"><img src="instagram.png" alt="Instagram" /></a><br>
+          <a href="#"><img src="twitter.png" alt="Twitter" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 RicoMap - Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Modal Register -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div class="modal-content registro-modal">
+        <span class="close" onclick="closeModal('modal')">&times;</span>
+        <h2>Elige tu perfil</h2>
+        <div class="perfil-opciones">
+          <button class="choice-btn" onclick="showForm('cliente')">
+            Soy Cliente 👤
+          </button>
+          <button class="choice-btn" onclick="showForm('restaurante')">
+            Soy Restaurante 🍽️
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Client -->
+      <form id="formCliente">
+        <label for="nombreC">Nombre Completo</label>
+        <input type="text" id="nombreC" required />
+        <label for="usuarioC">Nombre de usuario</label>
+        <input type="text" id="usuarioC" required />
+        <label for="emailC">Email</label>
+        <input type="email" id="emailC" required />
+        <label for="fechaNac">Fecha de nacimiento</label>
+        <input type="date" id="fechaNac" required />
+        <label for="direccionC">Dirección/Ubicación</label>
+        <input type="text" id="direccionC" />
+        <input type="submit" value="Registrarme" />
+      </form>
+
+      <!-- Form Restaurant -->
+      <form id="formRestaurante">
+        <label for="nombreR">Nombre del restaurante</label>
+        <input type="text" id="nombreR" required />
+        <label for="direccionR">Dirección/Ubicación</label>
+        <input type="text" id="direccionR" required />
+        <label for="nit">NIT (si posee)</label>
+        <input type="text" id="nit" />
+        <label for="desc">Descripción</label>
+        <textarea id="desc"></textarea>
+        <label for="hora">Hora de apertura</label>
+        <input type="time" id="hora" />
+        <label for="fotos">Fotos</label>
+        <input type="file" id="fotos" multiple />
+        <label for="tipo">Tipo de comida</label>
+        <input type="text" id="tipo" />
+        <input type="submit" value="Registrarme" />
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Scroll Reveal
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      },
+      { threshold: 0.2 }
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    // Modals
+    let formCliente = document.getElementById("formCliente");
+    let formRestaurante = document.getElementById("formRestaurante");
+
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+      if (id === "modal") resetForms();
+    }
+    function showForm(type) {
+      formCliente.style.display = "none";
+      formRestaurante.style.display = "none";
+      if (type === "cliente") formCliente.style.display = "block";
+      if (type === "restaurante") formRestaurante.style.display = "block";
+    }
+    function resetForms() {
+      formCliente.style.display = "none";
+      formRestaurante.style.display = "none";
+    }
+    window.onclick = function (e) {
+      document.querySelectorAll(".modal").forEach((modal) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+          if (modal.id === "modal") resetForms();
+        }
+      });
+    };
+
+    // Zoom img app-demo
+    const demoImages = document.querySelectorAll(".app-demo img");
+    demoImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        if (img.classList.contains("zoomed")) {
+          img.classList.remove("zoomed");
+        } else {
+          demoImages.forEach((i) => i.classList.remove("zoomed"));
+          img.classList.add("zoomed");
+        }
+      });
+    });
+  </script>
+  <script>
+    function animateCounter(id, target, duration) {
+      const counter = document.getElementById(id);
+      let start = 0;
+      const increment = target / (duration / 30); // velocidad
+      const interval = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          start = target;
+          clearInterval(interval);
+        }
+        counter.textContent = Math.floor(start);
+      }, 30);
+    }
+
+    // Activa el contador al hacer scroll hasta la sección
+    const counterSection = document.querySelector(".counter-section");
+    const observerCounter = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter("registroCounter", 1000000000, 2000);
+            observerCounter.unobserve(counterSection);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observerCounter.observe(counterSection);
+  </script>
+</body>
+
+</html>
