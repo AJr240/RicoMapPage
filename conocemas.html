@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RicoMap - Descubre nuevos sabores</title>
+  <title>Conoce más - RicoMap</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- 🔝 Barra de navegación -->
+  <!-- 🔝 Navbar -->
   <nav class="navbar">
     <div class="logo" onclick="location.href='index.html'">RicoMap</div>
     <!-- Botón menú móvil -->
@@ -20,37 +20,24 @@
       <span></span>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="index.html">Inicio</a></li>
       <li><a href="quees.html">Qué es</a></li>
       <li><a href="como.html">Regístrate Aquí</a></li>
-      <li><a href="conocemas.html">Conoce más</a></li>
+      <li><a href="conocemas.html" class="active">Conoce más</a></li>
       <li><a href="contactenos.html">Contáctenos</a></li>
     </ul>
   </nav>
 
-  <!-- 🏠 Hero principal -->
-  <header class="hero">
-    <img src="img/logo.png" alt="Logo RicoMap" class="hero-logo" />
-    <h1>Descubre nuevos sabores con RicoMap</h1>
-    <p>Apoya restaurantes locales y vive una experiencia gastronómica única</p>
-  </header>
+  <!-- 📱 Explora con un clic -->
+  <section class="app-demo reveal">
+    <h2>Explora con un clic</h2>
+    <p>Encuentra tu próximo lugar favorito desde tu celular.</p>
 
-  <!-- ⏳ Cuenta regresiva -->
-  <section class="countdown-section">
-    <h2>¡El lanzamiento está muy cerca!</h2>
-    <div class="countdown">
-      <div><span id="days">00</span>
-        <p>Días</p>
-      </div>
-      <div><span id="hours">00</span>
-        <p>Horas</p>
-      </div>
-      <div><span id="minutes">00</span>
-        <p>Minutos</p>
-      </div>
-      <div><span id="seconds">00</span>
-        <p>Segundos</p>
-      </div>
+    <div class="app-gallery">
+      <img src="img/app1.png" alt="Vista previa 1">
+      <img src="img/app2.png" alt="Vista previa 2">
+      <img src="img/app3.png" alt="Vista previa 3">
+      <img src="img/app4.png" alt="Vista previa 4">
     </div>
   </section>
 
@@ -64,7 +51,6 @@
       navLinks.classList.toggle("active");
     });
   </script>
-
 </body>
 
 </html>

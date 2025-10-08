@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cómo funciona RicoMap</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- 🔝 Navbar -->
+    <nav class="navbar">
+        <div class="logo" onclick="location.href='index.html'">RicoMap</div>
+        <!-- Botón menú móvil -->
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="quees.html">Qué es</a></li>
+            <li><a href="como.html" class="active">Regístrate Aquí</a></li>
+            <li><a href="conocemas.html">Conoce más</a></li>
+            <li><a href="contactenos.html">Contáctenos</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🧾 Sección de registro -->
+    <section class="register-section">
+        <h2>Forma parte de RicoMap</h2>
+        <p>Únete como cliente o restaurante y sé parte de nuestra comunidad gastronómica.</p>
+        <button class="btn" onclick="openModal('modal')">Registrarte</button>
+    </section>
+
+    <!-- 🔢 Contador de registros -->
+    <section class="counter-section">
+        <h2>Comunidad en crecimiento</h2>
+        <div class="counter-container">
+            <div class="counter-card">
+                <h3><span id="clientes-count">0</span>+</h3>
+                <p>Clientes registrados</p>
+            </div>
+            <div class="counter-card">
+                <h3><span id="restaurantes-count">0</span>+</h3>
+                <p>Restaurantes aliados</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🪟 Modal Registro -->
+    <div id="modal" class="modal">
+        <div class="modal-content register-modal">
+            <span class="close" onclick="closeModal('modal')">&times;</span>
+            <h2>Elige tu perfil</h2>
+            <div class="modal-buttons">
+                <button class="choice-btn" onclick="showForm('cliente')">Soy Cliente 👤</button>
+                <button class="choice-btn" onclick="showForm('restaurante')">Soy Restaurante 🍽️</button>
+            </div>
+
+            <!-- Form Cliente -->
+            <form id="formCliente">
+                <label>Nombre Completo</label>
+                <input type="text" placeholder="Tu nombre completo" required>
+                <label>Nombre de usuario</label>
+                <input type="text" placeholder="Usuario" required>
+                <label>Email</label>
+                <input type="email" placeholder="correo@ejemplo.com" required>
+                <label>Fecha de nacimiento</label>
+                <input type="date" required>
+                <label>Dirección / Ubicación</label>
+                <input type="text" placeholder="Tu ubicación" required>
+                <input type="submit" value="Registrarme">
+            </form>
+
+            <!-- Form Restaurante -->
+            <form id="formRestaurante">
+                <label>Nombre del Restaurante</label>
+                <input type="text" placeholder="Ej: Restaurante Mi Sabor" required>
+                <label>Dirección / Ubicación</label>
+                <input type="text" required>
+                <label>NIT (si posee)</label>
+                <input type="text">
+                <label>Descripción</label>
+                <textarea placeholder="Cuéntanos sobre tu restaurante"></textarea>
+                <label>Hora de apertura</label>
+                <input type="time" required>
+                <label>Tipo de comida</label>
+                <input type="text" placeholder="Ej: Comida rápida, típica, gourmet..." required>
+                <label>Fotos</label>
+                <input type="file" multiple>
+                <input type="submit" value="Registrarme">
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+    </script>
+</body>
+
+</html>

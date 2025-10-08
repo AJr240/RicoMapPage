@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qué es RicoMap</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- 🔝 Barra de navegación -->
+  <nav class="navbar">
+    <div class="logo" onclick="location.href='index.html'">RicoMap</div>
+    <!-- Botón menú móvil -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="quees.html" class="active">Qué es</a></li>
+      <li><a href="como.html">Regístrate Aquí</a></li>
+      <li><a href="conocemas.html">Conoce más</a></li>
+      <li><a href="contactenos.html">Contáctenos</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🧭 Cómo funciona -->
+  <section class="how-it-works reveal">
+    <h2>¿Cómo funciona RicoMap?</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-number">1</span>
+        <h3>Ingresa a RicoMap</h3>
+        <p>Accede fácilmente desde tu celular o navegador web.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <h3>Descubre nuevas opciones</h3>
+        <p>Explora restaurantes locales y sabores únicos en un solo lugar.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <h3>Elige qué quieres comer</h3>
+        <p>Filtra por tipo de comida, precio o cercanía y disfruta tu elección.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💡 Por qué unirte -->
+  <section class="reveal why-join">
+    <h2>¿Por qué unirte a RicoMap?</h2>
+    <div class="benefits">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img/cuality1.jpg" alt="Visibilidad">
+            <h3>Más Visibilidad</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Más Visibilidad</h3>
+            <p>
+              RicoMap funciona como un escaparate digital que amplifica la presencia de los restaurantes.<br><br>
+              Los negocios aparecen en un mapa interactivo con fotos, reseñas y menús dinámicos.<br><br>
+               Visibilidad orgánica y directa sin campañas costosas.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img/cuality2.png" alt="Opciones">
+            <h3>Nuevas Opciones</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Nuevas Opciones</h3>
+            <p>
+              Explora menús completos y filtrados por precio, distancia o tipo de comida.<br><br>
+              Aparta reservas o elige cómo pedir: recoger, comer en el sitio o con entrega.<br><br>
+               Más alternativas en menos tiempo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img/cuality2.jpg" alt="Economía local">
+            <h3>Apoyo Local</h3>
+          </div>
+          <div class="flip-card-back">
+            <h3>Apoyo Local</h3>
+            <p>
+              RicoMap impulsa la economía de barrio y el consumo consciente.<br><br>
+              Conecta usuarios con negocios cercanos y fortalece la comunidad gastronómica.<br><br>
+               Más que una app, una red de apoyo local.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="scripts.js"></script>
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    });
+  </script>
+</body>
+
+</html>

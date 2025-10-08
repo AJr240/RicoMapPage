@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contáctenos - RicoMap</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- 🔝 Navbar -->
+  <nav class="navbar">
+    <div class="logo" onclick="location.href='index.html'">RicoMap</div>
+    <!-- Botón menú móvil -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="quees.html">Qué es</a></li>
+      <li><a href="como.html">Regístrate Aquí</a></li>
+      <li><a href="conocemas.html">Conoce más</a></li>
+      <li><a href="contactenos.html" class="active">Contáctenos</a></li>
+    </ul>
+  </nav>
+
+  <!-- 📞 Sección de contacto -->
+  <section class="contact-section">
+    <h2>Contáctanos</h2>
+    <p>Si tienes preguntas, sugerencias o deseas colaborar con RicoMap, estaremos felices de escucharte.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Correo Electrónico</h3>
+        <p>admin@ricomap.com</p>
+      </div>
+      <div class="contact-card">
+        <h3>Dirección</h3>
+        <p>Cartagena, Colombia</p>
+      </div>
+      <div class="contact-card">
+        <h3>Teléfono</h3>
+        <p>+57 300 000 0000</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </section>
+
+  <!-- 🦶 Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>RicoMap</h3>
+        <p>Conectamos restaurantes locales con nuevos clientes, fomentando la economía popular y los sabores auténticos.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quees.html">Qué es</a></li>
+          <li><a href="como.html">Regístrate Aquí</a></li>
+          <li><a href="conocemas.html">Conoce más</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>📧 admin@ricomap.com</p>
+        <p>📍 Cartagena, Colombia</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 RicoMap — Todos los derechos reservados</p>
+      <p>Desarrollado por el equipo de RicoMap</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    });
+  </script>
+</body>
+
+</html>
